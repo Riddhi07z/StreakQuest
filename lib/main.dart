@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'screens/login_screen.dart';
+import 'data/user_data.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await UserData.loadData();
+
   runApp(const StreakQuestApp());
 }
 

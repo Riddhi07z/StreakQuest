@@ -1,3 +1,4 @@
+import '../services/storage_service.dart';
 import 'package:flutter/material.dart';
 import 'home_screen.dart';
 import '../data/user_data.dart';
@@ -44,9 +45,14 @@ class RewardScreen extends StatelessWidget {
             const SizedBox(height: 40),
 
             ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
                 UserData.streak++;
                 UserData.coins += 50;
+
+                await UserData.saveData();
+
+                print("CURRENT STREAK: ${UserData.streak}");
+                print("CURRENT COINS: ${UserData.coins}");
   Navigator.push(
     context,
     MaterialPageRoute(
