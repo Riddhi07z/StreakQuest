@@ -1,7 +1,15 @@
+import '../data/user_data.dart';
 import 'package:flutter/material.dart';
 
+
 class LeaderboardScreen extends StatelessWidget {
-  const LeaderboardScreen({super.key});
+  LeaderboardScreen({super.key});
+  final List<Map<String, dynamic>> players =  [
+    {"name": "Rahul", "streak": 150},
+    {"name": "Priya", "streak": 120},
+    {"name": "Amit", "streak": 100},
+    {"name": "Riddhi", "streak": UserData.streak},
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -21,35 +29,32 @@ class LeaderboardScreen extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: 30),
+            const SizedBox(height: 20),
 
-            ListTile(
-              leading: const Text("🥇"),
-              title: const Text("Rahul"),
-              trailing: const Text("150 Days"),
+            Expanded(
+              child: ListView.builder(
+                itemCount: players.length,
+                itemBuilder: (context, index) {
+                  return Card(
+                    child: ListTile(
+                      leading: Text("#${index + 1}"),
+                      title: Text(players[index]["name"]),
+                      trailing: Text(
+                        "${players[index]["streak"]} Days",
+                      ),
+                    ),
+                  );
+                },
+              ),
             ),
-
-            ListTile(
-              leading: const Text("🥈"),
-              title: const Text("Priya"),
-              trailing: const Text("120 Days"),
-            ),
-
-            ListTile(
-              leading: const Text("🥉"),
-              title: const Text("Amit"),
-              trailing: const Text("100 Days"),
-            ),
-
-            const SizedBox(height: 30),
 
             const Divider(),
 
-            const ListTile(
-              leading: Icon(Icons.person),
-              title: Text("You"),
-              trailing: Text("7 Days"),
-            ),
+            ListTile(
+  leading: const Icon(Icons.person),
+  title: const Text("You"),
+  trailing: Text("${UserData.streak} Days"),
+),
           ],
         ),
       ),

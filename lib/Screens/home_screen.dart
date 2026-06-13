@@ -73,7 +73,7 @@ ElevatedButton(
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const LeaderboardScreen(),
+        builder: (context) => LeaderboardScreen(),
       ),
     );
   },
