@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "681882035557",
+    "project_id": "streakquest-db430",
+    "storage_bucket": "streakquest-db430.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:681882035557:android:289145112391ea926a2d8c",
+        "android_client_info": {
+          "package_name": "com.example.streakplay"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmnmpn8JtqeSM4DkmvY5qJE7FOvpqef0g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
