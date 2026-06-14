@@ -1,3 +1,5 @@
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../data/user_data.dart';
 
@@ -6,6 +8,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser;
     return Scaffold(
       appBar: AppBar(
         title: const Text("Profile"),
@@ -21,15 +24,19 @@ class ProfileScreen extends StatelessWidget {
 
             const SizedBox(height: 20),
 
-            const Text(
-              "Riddhi Nath",
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            Text(
+  user?.displayName ?? "Unknown User",
+  style: const TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.bold,
+  ),
+),
 
             const SizedBox(height: 10),
+            Text(
+            user?.email ?? "No Email",
+),
+
 
             Text("🔥 Current Streak: ${UserData.streak} Days"),
 
@@ -40,6 +47,18 @@ class ProfileScreen extends StatelessWidget {
             const SizedBox(height: 10),
 
             const Text("🏆 Rank: #25"),
+
+            const SizedBox(height: 20),
+
+ElevatedButton(
+  onPressed: () async {
+    await GoogleSignIn().signOut();
+    await FirebaseAuth.instance.signOut();
+
+    Navigator.popUntil(context, (route) => route.isFirst);
+  },
+  child: const Text("Logout"),
+),
           ],
         ),
       ),
